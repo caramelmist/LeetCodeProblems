@@ -37,7 +37,7 @@ namespace LeetCodeProblems
     {
         public static string WritePaths( this TreeNode node)
         {
-            string ret = "[" + node.val;
+            string ret = "[" + node.value;
             if (node.right != null)
             {
                 ret = ret + "," + node.right.WritePaths() + "]";
