@@ -8,7 +8,7 @@ namespace LeetCodeProblems
     {
         public static void Main(string[] args)
         {
-            Solution s = new Problem718();
+            Solution s = new Problem985();
             s.Run();
 
             Console.ReadLine();
