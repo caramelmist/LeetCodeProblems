@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Xml.Linq;
 using LeetCodeProblems;
 
@@ -8,8 +9,20 @@ namespace LeetCodeProblems
     {
         public static void Main(string[] args)
         {
-            Solution s = new Problem37();
+            //A: Setup and stuff you don't want timed
+            var timer = new Stopwatch();
+            timer.Start();
+
+            //B: Run stuff you want timed
+            Solution s = new Problem1680();
             s.Run();
+
+            timer.Stop();
+
+            TimeSpan timeTaken = timer.Elapsed;
+            string foo = "Time taken: " + timeTaken.ToString(@"m\:ss\.fff");
+
+            Console.WriteLine(foo);
 
             Console.ReadLine();
         }
