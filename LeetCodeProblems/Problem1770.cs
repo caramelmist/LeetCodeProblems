@@ -42,9 +42,9 @@ namespace LeetCodeProblems
         public int MaximumScore(int[] nums, int[] multipliers)
         {
             TreeNode root = new TreeNode();
-            root.Add(nums, multipliers);
+            //root.Add(nums, multipliers);
 
-            int score = root.GetScore();
+            int score = 0; //root.GetScore();
 
             return score;
         }
