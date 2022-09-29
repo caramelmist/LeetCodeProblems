@@ -28,6 +28,58 @@ namespace LeetCodeProblems
 
         public bool EquationsPossible(string[] equations)
         {
+            List<Equate> es = new List<Equate>();
+            foreach (string eq in equations)
+            {
+                Equate e = Equate.Parse(eq);
+                es.Add(e);
+            }
+
+            for (int i = 0; i < es.Count; i++)
+            {
+                Equate e = es[i];
+                if (e.equal && e.firstValue != e.secondValue)
+                {
+                    char change = e.second;
+                    int val = e.firstValue;
+                    e.secondValue = val;
+
+                    for (int j = 0; j < es.Count; j++)
+                    {
+                        if (j == i)
+                        {
+                            continue;
+                        }
+                        if (es[j].first == e.first)
+                        {
+                            es[j].firstValue = val;
+                        }
+                        if (es[j].second == e.first)
+                        {
+                            es[j].secondValue = val;
+                        }
+
+                        i = 0;
+                    }
+                }
+            }
+
+            foreach( Equate e in es)
+            {
+                if(e.equal && e.firstValue != e.secondValue)
+                {
+                    return false;
+                }
+                if (!e.equal && e.firstValue == e.secondValue)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool EquationsPossible2(string[] equations)
+        {
             List<Token> tokens = new List<Token>();
 
             foreach(string eq in equations)
@@ -87,6 +139,26 @@ namespace LeetCodeProblems
             }
 
             return true;
+        }
+    }
+
+    public class Equate
+    {
+        public char first;
+        public int firstValue = -1;
+        public char second;
+        public int secondValue = -1;
+        public bool equal;
+
+        public static Equate Parse(string line)
+        {
+            Equate e = new Equate();
+            e.first = line[0];
+            e.firstValue = (int)e.first;
+            e.second = line[3];
+            e.secondValue = (int)e.second;
+            e.equal = line[1] == '!';
+            return e;
         }
     }
 
