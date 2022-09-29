@@ -9,8 +9,8 @@ namespace LeetCodeProblems
 
         public void Run()
         {
-            int[] actual = FindClosestElements(new int[] { 1, 2, 3, 4, 5 }, 4, 3);
-            int[] expected = new int[] { 1, 2, 3, 4 };
+            IList<int> actual = FindClosestElements(new int[] { 1, 2, 3, 4, 5 }, 4, 3);
+            IList<int> expected = new int[] { 1, 2, 3, 4 };
             Console.WriteLine("Expected matches actual: {0}", expected.SequenceEqual(actual));
 
             actual = FindClosestElements(new int[] { 1, 2, 3, 4, 5 }, 4, -1);
@@ -40,9 +40,7 @@ namespace LeetCodeProblems
                 }
             }
 
-
-
-            return result;
+            return result.ToList();
         }
     }
 }
