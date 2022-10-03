@@ -52,9 +52,52 @@ namespace LeetCodeProblems
             actual = MinCost("baab", new int[] { 8, 7, 2, 10 });
             expected = 2;
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+            actual = MinCost("aaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbbaaaaabbbbb", new int[] { 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1, 3, 1, 1, 1, 1 });
+            expected = 128;
+            Console.WriteLine("Outcome: {0} {1}", expected, actual);
         }
 
         public int MinCost(string colors, int[] neededTime)
+        {
+            int result = 0;
+            int len = colors.Length - 1;
+
+            int idx = 0;
+            int next = 1;
+
+            while(true)
+            {
+                if(next > len)
+                {
+                    break;
+                }
+
+                if (colors[idx] == colors[next])
+                {
+                    if (neededTime[idx] > neededTime[next])
+                    {
+                        result += neededTime[next];
+                        next++;
+                    }
+                    else
+                    {
+                        result += neededTime[idx];
+                        idx = next;
+                        next++;
+                    }
+                }
+                else
+                {
+                    idx = next;
+                    next++;
+                }
+            }
+
+            return result;
+        }
+
+        public int MinCost2(string colors, int[] neededTime)
         {
             int result = 0;
             int len = colors.Length - 1;
