@@ -14,7 +14,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem1578();
+            Solution s = new Problem37();
             s.Run();
 
             timer.Stop();

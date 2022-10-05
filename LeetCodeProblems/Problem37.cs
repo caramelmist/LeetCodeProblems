@@ -45,22 +45,38 @@ namespace LeetCodeProblems
             }
 
             Console.WriteLine("Sudoku solved!");
+
+            actual = new char[9][];
+            actual[0] = new char[] { '.', '.', '9', '7', '4', '8', '.', '.', '.' };
+            actual[1] = new char[] { '7', '.', '.', '.', '.', '.', '.', '.', '.' };
+            actual[2] = new char[] { '.', '2', '.', '1', '.', '9', '.', '.', '.' };
+            actual[3] = new char[] { '.', '.', '7', '.', '.', '.', '2', '4', '.' };
+            actual[4] = new char[] { '.', '6', '4', '.', '1', '.', '5', '9', '.' };
+            actual[5] = new char[] { '.', '9', '8', '.', '.', '.', '3', '.', '.' };
+            actual[6] = new char[] { '.', '.', '.', '8', '.', '3', '.', '2', '.' };
+            actual[7] = new char[] { '.', '.', '.', '.', '.', '.', '.', '.', '6' };
+            actual[8] = new char[] { '.', '.', '.', '2', '7', '5', '9', '.', '.' };
+
+            SolveSudoku(actual);
+
+            Console.WriteLine("Sudoku solved!");
         }
 
         public void SolveSudoku(char[][] board)
         {
             Board b = new Board(board);
             b.Solve();
-            Console.WriteLine(b.Print());
         }
     }
 
     public class Board
     {
+        private char[][] _board;
         private Position[] _positions = new Position[81];
 
         public Board(char[][] board)
         {
+            _board = board;
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -82,18 +98,84 @@ namespace LeetCodeProblems
 
         public void Solve()
         {
+            bool isComplete = false;
+            while (!isComplete)
+            {
+                isComplete = true;
+                for (int i = 0; i < _positions.Length; i++)
+                {
+                    if (!_positions[i].IsSolved())
+                    {
+                        isComplete = false;
+                        UpdatePosition(_positions[i]);
+                    }
+                    else
+                    {
+                        Position p = _positions[i];
+                        if (_board[p.Row][p.Col] == '.')
+                        {
+                            _board[p.Row][p.Col] = ("" + p.Value)[0];
+                        }
+                    }
+                }
+            }
 
+        }
+
+        public void UpdatePosition(Position p)
+        {
+            if (p.IsSolved())
+            {
+                return;
+            }
+
+            IEnumerable<Position> rowPoses = _positions.Where(a => a.Row == p.Row && a.Id != p.Id);
+            UpdatePosition(p, rowPoses);
+            if (!p.IsSolved())
+            {
+                IEnumerable<Position> colPoses = _positions.Where(a => a.Col == p.Col && a.Id != p.Id);
+                UpdatePosition(p, colPoses);
+
+                if (!p.IsSolved())
+                {
+                    IEnumerable<Position> boxPoses = _positions.Where(a => a.Box == p.Box && a.Id != p.Id);
+                    UpdatePosition(p, boxPoses);
+                }
+            }
+        }
+
+        public void UpdatePosition(Position p, IEnumerable<Position> others)
+        {
+            if (p.IsSolved())
+            {
+                return;
+            }
+
+            foreach(Position o in others)
+            {
+                if(o.Id == p.Id)
+                {
+                    continue;
+                }
+                if(o.IsSolved())
+                {
+                    p.Remove(o.Value);
+                }
+                /*else
+                {
+                    UpdatePosition(o, others.Where(a => a.Id != o.Id));
+                }*/
+            }
         }
 
         public string Print()
         {
             string answer = "";
-            int id = 0;
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    id = (i * 0) + j;
+                    int id = (i * 0) + j;
                     Position p = _positions[id];
                     answer += p.ToString() + ',';
                 }
@@ -127,6 +209,20 @@ namespace LeetCodeProblems
             int b1 = r / 3;
             int b2 = c / 3;
             _box = (b1 * 3) + b2;
+        }
+
+        public int Value { get { return _value; } }
+        public int Row { get { return _row; } }
+        public int Col { get { return _col; } }
+        public int Box { get { return _box; } }
+
+        public void Remove(int value)
+        {
+            _possible.Remove(value);
+            if(_possible.Count == 1)
+            {
+                SetValue(_possible[0]);
+            }
         }
 
         public void SetValue(int value)
