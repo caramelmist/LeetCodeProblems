@@ -9,6 +9,7 @@ namespace LeetCodeProblems
     public class TreeNode
     {
         public int value;
+        public int val;
         
         public TreeNode? left;
         public TreeNode? right;
@@ -16,6 +17,7 @@ namespace LeetCodeProblems
         public TreeNode(int val = 0, TreeNode? left = null, TreeNode? right = null)
         {
             this.value = val;
+            this.val = val;
             this.left = left;
             this.right = right;
         }
