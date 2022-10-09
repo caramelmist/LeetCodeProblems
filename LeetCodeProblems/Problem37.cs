@@ -161,10 +161,6 @@ namespace LeetCodeProblems
                 {
                     p.Remove(o.Value);
                 }
-                /*else
-                {
-                    UpdatePosition(o, others.Where(a => a.Id != o.Id));
-                }*/
             }
         }
 
@@ -215,6 +211,7 @@ namespace LeetCodeProblems
         public int Row { get { return _row; } }
         public int Col { get { return _col; } }
         public int Box { get { return _box; } }
+        public List<int> Possible { get { return _possible; } }
 
         public void Remove(int value)
         {
