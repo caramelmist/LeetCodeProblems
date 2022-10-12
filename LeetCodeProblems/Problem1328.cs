@@ -18,7 +18,7 @@ namespace LeetCodeProblems
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
 
             actual = BreakPalindrome("aba");
-            expected = "bba";
+            expected = "abb";
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
 
             actual = BreakPalindrome("abba");
@@ -36,24 +36,30 @@ namespace LeetCodeProblems
 
         public string BreakPalindrome(string palindrome)
         {
-            string p = palindrome.Trim('a');
-            if (p.Length == 0)
+            if (palindrome.Length == 1)
             {
                 return "";
             }
+
+            string p = palindrome.Trim('a');
+            if (p.Length == 0)
+            {
+                string start = palindrome.Substring(0, palindrome.Length-1);
+                return start + 'b';
+            }
             else 
             {
-                int idx = palindrome.IndexOf(p[0]);
                 if (p.Length == 1)
                 {
-                    int mid = palindrome.Length / 2;
-                    if (idx == mid)
+                    if (palindrome.StartsWith('a'))
                     {
-                        return "";
+                        string end = palindrome.Substring(1);
+                        return 'b' + end;
                     }
                 }
                 else
                 {
+                    int idx = palindrome.IndexOf(p[0]);
                     string start = palindrome.Substring(0, idx);
                     string end = palindrome.Substring(idx + 1);
                     return start + 'a' + end;
