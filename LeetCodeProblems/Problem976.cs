@@ -21,6 +21,20 @@ namespace LeetCodeProblems
 
         public int LargestPerimeter(int[] nums)
         {
+            Array.Sort(nums);
+
+            int a = 0;
+            int b = 0;
+            int c = 0;
+
+            bool triangle = false;
+            while (!triangle)
+            {
+                
+            }
+
+
+
             return 0;
         }
     }
