@@ -38,6 +38,14 @@ namespace LeetCodeProblems
             expected = 36;
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
 
+            actual = MinDifficulty(new int[] { 25, 1, 10, 20, 10, 1 }, 4);
+            expected = 36;
+            Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+            actual = MinDifficulty(new int[] { 25, 1, 10, 20, 10, 1 }, 4);
+            expected = 36;
+            Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
             actual = MinDifficulty(new int[] { 25, 1, 10, 20, 10, 1 }, 2);
             expected = 26;
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
