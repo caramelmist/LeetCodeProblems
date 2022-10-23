@@ -2,6 +2,7 @@
 using System.Text;
 using System.Xml.Linq;
 using LeetCodeProblems;
+using LeetCodeProblems.Solved;
 
 namespace LeetCodeProblems
 {
@@ -14,7 +15,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem219();
+            Solution s = new Problem645();
             s.Run();
 
             timer.Stop();
