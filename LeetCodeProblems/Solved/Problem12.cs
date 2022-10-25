@@ -1,7 +1,7 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
-    public class Problem12: Solution
+    public class Problem12 : Solution
     {
         public Problem12()
         {
@@ -48,14 +48,14 @@ namespace LeetCodeProblems
             string ret = "";
 
             List<int> keys = map.Keys.ToList();
-            foreach(int val in keys)
+            foreach (int val in keys)
             {
                 int digits = num / val;
-                for(int i = 0; i < digits; i++)
+                for (int i = 0; i < digits; i++)
                 {
                     ret += map[val];
                 }
-                num -= (val * digits);
+                num -= val * digits;
             }
 
             return ret;

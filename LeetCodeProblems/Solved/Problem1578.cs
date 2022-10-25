@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem1578 : Solution
     {
@@ -66,9 +66,9 @@ namespace LeetCodeProblems
             int idx = 0;
             int next = 1;
 
-            while(true)
+            while (true)
             {
-                if(next > len)
+                if (next > len)
                 {
                     break;
                 }
@@ -119,7 +119,7 @@ namespace LeetCodeProblems
                 while (removed.Contains(i + offset))
                 {
                     offset++;
-                    if(i + offset > len)
+                    if (i + offset > len)
                     {
                         return result;
                     }
@@ -127,7 +127,7 @@ namespace LeetCodeProblems
 
                 if (colors[i] == colors[i + offset])
                 {
-                    if(neededTime[i] > neededTime[i + offset])
+                    if (neededTime[i] > neededTime[i + offset])
                     {
                         result += neededTime[i + offset];
                         removed.Add(i + offset);

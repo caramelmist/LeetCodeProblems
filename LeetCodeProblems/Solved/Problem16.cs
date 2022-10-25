@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem16 : Solution
     {
@@ -29,7 +29,7 @@ namespace LeetCodeProblems
 
         public int ThreeSumClosest(int[] nums, int target)
         {
-            if(nums.Length == 3)
+            if (nums.Length == 3)
             {
                 return nums[0] + nums[1] + nums[2];
             }
@@ -41,13 +41,13 @@ namespace LeetCodeProblems
 
             for (int i = 0; i < nums.Length; i++)
             {
-                for (int j = i+1; j < nums.Length; j++)
+                for (int j = i + 1; j < nums.Length; j++)
                 {
-                    for (int k = j+1; k < nums.Length; k++)
+                    for (int k = j + 1; k < nums.Length; k++)
                     {
                         int value = nums[i] + nums[j] + nums[nums.Length - 1];
 
-                        if(value < target)
+                        if (value < target)
                         {
                             k = nums.Length;
                         }
@@ -57,7 +57,7 @@ namespace LeetCodeProblems
                         }
 
                         int diff = Math.Abs(value - target);
-                        if(diff < closest)
+                        if (diff < closest)
                         {
                             closest = diff;
                             ret = value;
@@ -68,7 +68,7 @@ namespace LeetCodeProblems
                             return target;
                         }
 
-                        if(value > target)
+                        if (value > target)
                         {
                             break;
                         }

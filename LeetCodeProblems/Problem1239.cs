@@ -25,7 +25,7 @@ namespace LeetCodeProblems
 
         public int MaxLength(IList<string> arr)
         {
-
+            return 0;
         }
 
         private bool IsUnique(string s)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem112 : Solution
     {
@@ -26,9 +26,9 @@ namespace LeetCodeProblems
             Console.WriteLine("Outcome: {0} {1}", expected, actual);
         }
 
-        public bool HasPathSum(TreeNode root, int targetSum)
+        public bool HasPathSum(TreeNode? root, int targetSum)
         {
-            if(root == null)
+            if (root == null)
             {
                 return false;
             }
@@ -38,22 +38,22 @@ namespace LeetCodeProblems
         public bool HasPathSum(TreeNode root, int targetSum, int value)
         {
             int currentValue = value + root.value;
-            if(root.left == null && root.right == null)
+            if (root.left == null && root.right == null)
             {
-                if( targetSum == currentValue)
+                if (targetSum == currentValue)
                 {
                     return true;
                 }
             }
-            
-            if( root.left != null)
+
+            if (root.left != null)
             {
-                if(HasPathSum(root.left, targetSum, currentValue))
+                if (HasPathSum(root.left, targetSum, currentValue))
                 {
                     return true;
                 }
             }
-            
+
             if (root.right != null)
             {
                 if (HasPathSum(root.right, targetSum, currentValue))

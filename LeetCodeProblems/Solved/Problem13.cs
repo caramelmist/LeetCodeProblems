@@ -1,7 +1,7 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
-    public class Problem13: Solution
+    public class Problem13 : Solution
     {
         public Problem13()
         {

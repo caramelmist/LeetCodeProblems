@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem19 : Solution
     {
@@ -33,7 +33,7 @@ namespace LeetCodeProblems
 
         public ListNode RemoveNthFromEnd(ListNode head, int n)
         {
-            if(head.next == null)
+            if (head.next == null)
             {
                 return null;
             }
@@ -47,7 +47,7 @@ namespace LeetCodeProblems
                 refr = refr.next;
             }
 
-            if(n == 1)
+            if (n == 1)
             {
                 references[references.Count - 2].next = null;
             }

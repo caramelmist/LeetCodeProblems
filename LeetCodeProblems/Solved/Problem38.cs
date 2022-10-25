@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem38 : Solution
     {
@@ -38,14 +38,14 @@ namespace LeetCodeProblems
 
         public string CountAndSay(int n)
         {
-            if(n == 1)
+            if (n == 1)
             {
                 return "1";
             }
 
             string ret = "1";
 
-            for(int i = 1; i < n; i++)
+            for (int i = 1; i < n; i++)
             {
                 ret = Compress(ret);
             }
@@ -60,10 +60,10 @@ namespace LeetCodeProblems
             int num = 0;
             for (int j = 0; j < input.Length; j++)
             {
-                if(c == input[j])
+                if (c == input[j])
                 {
                     num++;
-                    if (j == input.Length-1)
+                    if (j == input.Length - 1)
                     {
                         ret += num + "" + c;
                     }

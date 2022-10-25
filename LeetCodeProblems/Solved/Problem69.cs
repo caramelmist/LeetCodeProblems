@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem69 : Solution
     {
@@ -48,17 +48,17 @@ namespace LeetCodeProblems
 
         public int MySqrt(int x)
         {
-            if( x <= 1)
+            if (x <= 1)
             {
                 return x;
             }
 
-            for(int i = 1; i <= x; i++)
+            for (int i = 1; i <= x; i++)
             {
                 int val = i * i;
 
                 // cater for wrap around on max constraint
-                if(val < 0)
+                if (val < 0)
                 {
                     return 46340;
                 }
@@ -67,7 +67,7 @@ namespace LeetCodeProblems
                 {
                     return i;
                 }
-                else if(val > x)
+                else if (val > x)
                 {
                     return i - 1;
                 }
@@ -75,7 +75,7 @@ namespace LeetCodeProblems
 
             return 0;
         }
-    
+
 
         public int MySqrt2(int x)
         {
@@ -89,7 +89,7 @@ namespace LeetCodeProblems
                 if (mid * mid > x)
                 {
                     next = mid - 1;
-                    if(next * next <= x)
+                    if (next * next <= x)
                     {
                         return next;
                     }
@@ -114,7 +114,7 @@ namespace LeetCodeProblems
                 {
                     return mid;
                 }
-                mid = ((high - low) / 2) + low;
+                mid = (high - low) / 2 + low;
 
             } while (mid > 1);
 

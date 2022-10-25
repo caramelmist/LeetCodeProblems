@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem113 : Solution
     {
@@ -33,20 +33,20 @@ namespace LeetCodeProblems
             Console.WriteLine("Outcome: {0} {1}", expected.Count, actual.Count);
         }
 
-        public IList<IList<int>> PathSum(TreeNode root, int targetSum)
+        public IList<IList<int>> PathSum(TreeNode? root, int targetSum)
         {
-            if(root == null)
+            if (root == null)
             {
                 return new List<IList<int>>();
             }
             WrappedTreeNode wrapped = new WrappedTreeNode(root);
             List<WrappedTreeNode> wraps = wrapped.GetLeaves();
             List<IList<int>> result = new List<IList<int>>();
-            foreach(WrappedTreeNode w in wraps)
+            foreach (WrappedTreeNode w in wraps)
             {
                 List<int> values = w.GetBranchDetails();
                 int value = values.Sum();
-                if(value == targetSum)
+                if (value == targetSum)
                 {
                     result.Add(values);
                 }
