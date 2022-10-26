@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem718 : Solution
     {
@@ -27,16 +27,16 @@ namespace LeetCodeProblems
         {
             int max = 0;
 
-            for (int i = 0; i < nums1.Length-max; i++)
+            for (int i = 0; i < nums1.Length - max; i++)
             {
                 for (int j = 0; j < nums2.Length; j++)
                 {
-                    if(nums1[i] == nums2[j])
+                    if (nums1[i] == nums2[j])
                     {
                         int count = 1;
                         for (int k = 1; k < nums1.Length - i && k < nums2.Length - j; k++)
                         {
-                            if (nums1[i+k] == nums2[j+k])
+                            if (nums1[i + k] == nums2[j + k])
                             {
                                 count++;
                             }
@@ -45,7 +45,7 @@ namespace LeetCodeProblems
                                 break;
                             }
                         }
-                        if(count > max)
+                        if (count > max)
                         {
                             max = count;
                         }

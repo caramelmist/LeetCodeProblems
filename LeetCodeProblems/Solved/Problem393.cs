@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem393 : Solution
     {

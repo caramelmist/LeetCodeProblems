@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem985 : Solution
     {
@@ -11,11 +11,11 @@ namespace LeetCodeProblems
         {
             int[] actual = SumEvenAfterQueries(new int[] { 1, 2, 3, 4 }, new int[][] { new int[] { 1, 0 }, new int[] { -3, 1 }, new int[] { -4, 0 }, new int[] { 2, 3 } });
             int[] expected = new int[] { 8, 6, 2, 4 };
-            Console.WriteLine("Outcome: {0} {1}", String.Join(',', expected), String.Join(',', actual));
+            Console.WriteLine("Outcome: {0} {1}", string.Join(',', expected), string.Join(',', actual));
 
             actual = SumEvenAfterQueries(new int[] { 1 }, new int[][] { new int[] { 4, 0 } });
             expected = new int[] { 0 };
-            Console.WriteLine("Outcome: {0} {1}", String.Join(',', expected), String.Join(',', actual));
+            Console.WriteLine("Outcome: {0} {1}", string.Join(',', expected), string.Join(',', actual));
         }
 
         public int[] SumEvenAfterQueries(int[] nums, int[][] queries)

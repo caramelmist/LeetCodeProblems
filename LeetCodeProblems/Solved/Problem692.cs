@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem692 : Solution
     {
@@ -14,8 +14,8 @@ namespace LeetCodeProblems
             IList<string> expected = new string[] { "i", "love" };
             Console.WriteLine("Expected matches actual: {0}", expected.SequenceEqual(actual));
 
-            actual = TopKFrequent(new string[] { "the","day","is","sunny","the","the","the","sunny","is","is" }, 4);
-            expected = new string[] { "the","is","sunny","day" };
+            actual = TopKFrequent(new string[] { "the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is" }, 4);
+            expected = new string[] { "the", "is", "sunny", "day" };
             Console.WriteLine("Expected matches actual: {0}", expected.SequenceEqual(actual));
 
             actual = TopKFrequent(new string[] { "the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is" }, 3);
@@ -50,7 +50,7 @@ namespace LeetCodeProblems
                 }
             }
 
-            IEnumerable<KeyValuePair<string,int>> m = map.OrderBy(a => a.Value).Reverse().Take(k);
+            IEnumerable<KeyValuePair<string, int>> m = map.OrderBy(a => a.Value).Reverse().Take(k);
 
             List<string> ret = m.Select(a => a.Key).ToList();
             return ret;
