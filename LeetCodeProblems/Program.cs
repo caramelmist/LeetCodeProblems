@@ -15,7 +15,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem1662();
+            Solution s = new Problem49();
             s.Run();
 
             timer.Stop();
@@ -26,6 +26,24 @@ namespace LeetCodeProblems
             Console.WriteLine(foo);
 
             Console.ReadLine();
+        }
+
+        public static string Print2DArray(IList<IList<string>> matrix)
+        {
+            string ret = "[";
+            foreach(IList<string> row in matrix)
+            {
+                string value = "[";
+                for (int j = 0; j < row.Count; j++)
+                {
+                    value += row[j] + ", ";
+                }
+                value += "]";
+                value = value.Replace(", ]", "]");
+                ret += value + ",";
+            }
+            ret += "]";
+            return ret.Replace("],]", "]]");
         }
 
         public static string Print2DArray<T>(T[,] matrix)
