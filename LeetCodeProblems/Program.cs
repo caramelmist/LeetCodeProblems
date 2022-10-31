@@ -15,7 +15,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem2();
+            Solution s = new Problem9();
             s.Run();
 
             timer.Stop();
@@ -314,22 +314,6 @@ namespace LeetCodeProblems
             }
             // should not ever get here according to assumptions
             return new int[] { 0 };
-        }
-
-        public static bool IsPalindrome(int x)
-        {
-            string value = x.ToString();
-            int first = 0;
-            int last = value.Length - 1;
-            for (int i = 0; i < value.Length / 2; i++)
-            {
-                if (value[first + i] != value[last - i])
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 
