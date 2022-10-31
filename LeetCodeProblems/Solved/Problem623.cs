@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem623 : Solution
     {
         public void Run()
         {
             TreeNode root = new TreeNode(4, new TreeNode(2, new TreeNode(3), new TreeNode(1)), new TreeNode(6, new TreeNode(5)));
-            TreeNode actual = AddOneRow(root, 1, 2); 
+            TreeNode actual = AddOneRow(root, 1, 2);
             Console.WriteLine("Outcome: {0}", actual.WritePaths());
 
             root = new TreeNode(4, new TreeNode(2, new TreeNode(3), new TreeNode(1)));
@@ -25,7 +25,7 @@ namespace LeetCodeProblems
 
         public TreeNode AddOneRow(TreeNode root, int val, int depth)
         {
-            if(depth == 1)
+            if (depth == 1)
             {
                 TreeNode newKid = new TreeNode(val, root);
                 return newKid;
@@ -35,13 +35,13 @@ namespace LeetCodeProblems
             refrs.Add(root);
             int c = 1;
 
-            while (c < depth-1)
+            while (c < depth - 1)
             {
                 int remove = refrs.Count;
                 for (int i = 0; i < remove; i++)
                 {
                     TreeNode refr = refrs[0];
-                    if(refr.right != null)
+                    if (refr.right != null)
                     {
                         refrs.Add(refr.right);
                     }

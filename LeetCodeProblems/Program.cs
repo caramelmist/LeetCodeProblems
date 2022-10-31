@@ -15,7 +15,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem9();
+            Solution s = new Problem606();
             s.Run();
 
             timer.Stop();
@@ -199,28 +199,6 @@ namespace LeetCodeProblems
             return cm.GetBestScore();
         }
 
-        public static void RunTree2str()
-        {
-            TreeNode node = new TreeNode(1, new TreeNode(2, new TreeNode(4)), new TreeNode(3));
-            string answer = Tree2str(node);
-            Console.WriteLine("Should be 1(2(4))(3) was: {0}", answer.ToString());
-            Console.WriteLine("Test Passed: {0}", answer == "1(2(4))(3)");
-
-            node = new TreeNode(1, new TreeNode(2, null, new TreeNode(4)), new TreeNode(3));
-            answer = Tree2str(node);
-            Console.WriteLine("Should be 1(2()(4))(3) was: {0}", answer.ToString());
-            Console.WriteLine("Test Passed: {0}", answer == "1(2()(4))(3)");
-        }
-
-        public static string Tree2str(TreeNode root)
-        {
-            TreeNode pointer = root;
-
-            string output = root.GetTreeString();
-
-            return output;
-        }
-
         public static void RunRotate()
         {
             int[,] matrix = new int[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
@@ -317,31 +295,7 @@ namespace LeetCodeProblems
         }
     }
 
-    public static class TreeExtensions
-    {
-        public static string GetTreeString(this TreeNode node)
-        {
-            string output = "";
-            if (node != null)
-            {
-                output += node.val;
-            }
-            if (node.left != null)
-            {
-                output += "(" + node.left.GetTreeString() + ")";
-            }
-            else if (node.right != null)
-            {
-                output += "()";
-            }
-
-            if (node.right != null)
-            {
-                output += "(" + node.right.GetTreeString() + ")";
-            }
-
-            return output;
-        }
+    
         */
     }
 }
