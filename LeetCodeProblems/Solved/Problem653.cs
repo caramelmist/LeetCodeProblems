@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem653 : Solution
     {
@@ -39,7 +39,7 @@ namespace LeetCodeProblems
         {
             list.Add(root.val);
 
-            if(root.left != null)
+            if (root.left != null)
             {
                 int v = root.left.val;
                 int f = k - v;

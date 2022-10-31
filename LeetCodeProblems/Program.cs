@@ -15,7 +15,7 @@ namespace LeetCodeProblems
             timer.Start();
 
             //B: Run stuff you want timed
-            Solution s = new Problem606();
+            Solution s = new Problem948();
             s.Run();
 
             timer.Stop();
@@ -83,122 +83,6 @@ namespace LeetCodeProblems
         }
 
         /*
-        public static void RunBagOfTokensScore()
-        {
-            int[] tokens = new int[] { 100 };
-            int power = 50;
-            int actual = BagOfTokensScore(tokens, power);
-            int expected = 0;
-            Console.WriteLine("Outcome: {0} {1}", expected, actual);
-
-            tokens = new int[] { 100, 200 };
-            power = 150;
-            actual = BagOfTokensScore(tokens, power);
-            expected = 1;
-            Console.WriteLine("Outcome: {0} {1}", expected, actual);
-
-            tokens = new int[] { 100, 200, 300, 400 };
-            power = 200;
-            actual = BagOfTokensScore(tokens, power);
-            expected = 2;
-            Console.WriteLine("Outcome: {0} {1}", expected, actual);
-
-            tokens = new int[] { 25, 99 };
-            power = 99;
-            actual = BagOfTokensScore(tokens, power);
-            expected = 1;
-            Console.WriteLine("Outcome: {0} {1}", expected, actual);
-
-            tokens = new int[] { 52, 65, 35, 88, 28, 1, 4, 68, 56, 95 };
-            power = 94;
-            actual = BagOfTokensScore(tokens, power);
-            expected = 5;
-            Console.WriteLine("Outcome: {0} {1}", expected, actual);
-        }
-
-        public static int BagOfTokensScore(int[] tokens, int power)
-        {
-            List<int> ts = tokens.ToList();
-            ts.Sort();
-
-            int score = 0;
-
-            while (ts.Count > 0)
-            {
-                while (ts.Count > 0 && ts[0] <= power)
-                {
-                    power -= ts[0];
-                    ts.Remove(ts[0]);
-                    score++;
-                }
-
-                if (ts.Count <= 1)
-                {
-                    break;
-                }
-
-                int k = 0;
-                int reqPower = ts[0];
-                while (ts.Count > 0 && reqPower > power && (score + k) > 0)
-                {
-                    int value = ts[ts.Count - 1];
-                    power += value;
-                    k++;
-                    if (reqPower <= power)
-                    {
-                        score -= k;
-                        ts.RemoveAt(ts.Count - 1);
-                    }
-                    else if (ts.Count > k)
-                    {
-                        reqPower += ts[k];
-                    }
-                }
-
-                if (k == 0)
-                {
-                    break;
-                }
-            }
-
-
-            return score;
-        }
-
-        public static int BagOfTokensScore3(int[] tokens, int power)
-        {
-            List<int> ts = tokens.ToList();
-            ts.Sort();
-
-            int score = 0;
-            int powerUpsUsed = 0;
-            int committedPowerUps = 0;
-
-            for (int i = 0; i < tokens.Length - (powerUpsUsed + committedPowerUps); i++)
-            {
-                if (tokens[i] <= power)
-                {
-                    score++;
-                    powerUpsUsed += committedPowerUps;
-                    committedPowerUps = 0;
-                }
-                else if (score > 0)
-                {
-                    power += ts[tokens.Length - powerUpsUsed - committedPowerUps - 1];
-                    committedPowerUps++;
-                    i--;
-                }
-            }
-
-            return score - powerUpsUsed;
-        }
-
-        public static int BagOfTokensScor2(int[] tokens, int power)
-        {
-            Command cm = new Command(tokens, -1, power, 0);
-            return cm.GetBestScore();
-        }
-
         public static void RunRotate()
         {
             int[,] matrix = new int[3, 3] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
@@ -221,61 +105,6 @@ namespace LeetCodeProblems
         {
 
         }
-
-        public static void RunBuddyStrings()
-        {
-            bool solved = BuddyStrings("ab", "ba");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("sideshj", "jsidesh");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("ab", "ab");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("aa", "aa");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("abcd", "cbad");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("abed", "cbad");
-            Console.WriteLine("[{0}]", solved);
-
-            solved = BuddyStrings("cbadd", "cbad");
-            Console.WriteLine("[{0}]", solved);
-        }
-
-        public static bool BuddyStrings(string s, string goal)
-        {
-            if (s.Length != goal.Length || s.Length <= 1)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < s.Length; i++)
-            {
-                for (int j = 0; j < s.Length; j++)
-                {
-                    if (i == j)
-                    {
-                        continue;
-                    }
-
-                    string other = s.Remove(i, 1).Insert(i, s[j].ToString());
-                    other = other.Remove(j, 1).Insert(j, s[i].ToString());
-
-                    Console.WriteLine(other);
-                    if (goal.Equals(other))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
 
         public static int[] TwoSum(int[] nums, int target)
         {
