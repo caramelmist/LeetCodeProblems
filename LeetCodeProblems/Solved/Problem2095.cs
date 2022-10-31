@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem2095 : Solution
     {
@@ -24,7 +24,7 @@ namespace LeetCodeProblems
             actual = DeleteMiddle(actual);
             expected = "2->";
             Console.WriteLine("Outcome: {0}  {1}", expected, actual.Print());
-            
+
             actual = new ListNode(2);
             actual = DeleteMiddle(actual);
             expected = "";
@@ -41,9 +41,9 @@ namespace LeetCodeProblems
                 refr = refr.next;
             }
 
-            if(references.Count > 2)
+            if (references.Count > 2)
             {
-                refr = references[(references.Count)/2];
+                refr = references[references.Count / 2];
                 refr.val = refr.next.val;
                 refr.next = refr.next.next;
             }
@@ -52,7 +52,7 @@ namespace LeetCodeProblems
                 refr = references[0];
                 refr.next = null;
             }
-            else if(references.Count == 1)
+            else if (references.Count == 1)
             {
                 return null;
             }

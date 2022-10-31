@@ -1,7 +1,7 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
-    public class Problem1832: Solution
+    public class Problem1832 : Solution
     {
         public Problem1832()
         {
@@ -38,12 +38,12 @@ namespace LeetCodeProblems
 
         public bool CheckIfPangram(string sentence)
         {
-            if(sentence.Length < 26)
+            if (sentence.Length < 26)
             {
                 return false;
             }
 
-            for(int i =0; i < 26; i++)
+            for (int i = 0; i < 26; i++)
             {
                 int pos = i + 97;
                 char c = (char)pos;

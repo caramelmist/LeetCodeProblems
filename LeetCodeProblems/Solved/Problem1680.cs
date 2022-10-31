@@ -1,7 +1,7 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
-    public class Problem1680: Solution
+    public class Problem1680 : Solution
     {
         public Problem1680()
         {
@@ -41,7 +41,7 @@ namespace LeetCodeProblems
                         answer += pow;
                         answer %= 1000000007;
                     }
-                    pow = (pow * 2) % 1000000007;
+                    pow = pow * 2 % 1000000007;
                 }
             }
 
@@ -68,7 +68,7 @@ namespace LeetCodeProblems
                     answer %= 1000000007;
                 }
 
-                pow = (pow * 2) % 1000000007;
+                pow = pow * 2 % 1000000007;
             }
 
             return answer;
@@ -94,7 +94,7 @@ namespace LeetCodeProblems
                 answer %= 1000000007;
             }
 
-            for (int i = 1, j = binString.Length-2; i < binString.Length; i++, j--)
+            for (int i = 1, j = binString.Length - 2; i < binString.Length; i++, j--)
             {
                 pow[i] = pow[i - 1] * 2;
                 pow[i] %= 1000000007;
