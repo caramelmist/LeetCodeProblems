@@ -25,7 +25,7 @@ namespace LeetCodeProblems
 
         public string MakeGood(string s)
         {
-
+            return s;
         }
     }
 }
