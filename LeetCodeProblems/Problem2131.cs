@@ -25,7 +25,18 @@ namespace LeetCodeProblems
 
         public int LongestPalindrome(string[] words)
         {
+            IEnumerable<string> doubles = words.Where(a => a[0] == a[1]);
+            IEnumerable<string> mismatched = words.Where(a => a[0] != a[1]);
+
+            //abaccaba
+            //abccba
+            //abba
+            //aa
+
+
+
             return 0;
         }
     }
 }
+
