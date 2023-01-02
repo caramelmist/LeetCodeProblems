@@ -118,6 +118,18 @@ namespace LeetCodeProblems
                         }
                     }
                 }
+
+                for (int i = 0; i < 9; i++)
+                {
+                    IEnumerable<Position> poses = _positions.Where(a => a.Row == i);
+                    Trim(poses);
+                    poses = _positions.Where(a => a.Col == i);
+                    Trim(poses);
+                    poses = _positions.Where(a => a.Box == i);
+                    Trim(poses);
+                }
+
+                
             }
 
         }
@@ -160,6 +172,36 @@ namespace LeetCodeProblems
                 if(o.IsSolved())
                 {
                     p.Remove(o.Value);
+                }
+            }
+        }
+
+        public void Trim(IEnumerable<Position> positions)
+        {
+            foreach (Position p in positions)
+            {
+                if (p.IsSolved())
+                {
+                    continue;
+                }
+
+                if(p.Possible.Count == 2)
+                {
+                    IEnumerable<Position> other = positions.Where(a => a.Id != p.Id && 
+                                                                  a.Possible.Count == 2 && 
+                                                                  a.Possible.Contains(p.Possible[0]) &&
+                                                                  a.Possible.Contains(p.Possible[1]));
+                    if(other.Count() > 0)
+                    {
+                        Position o = other.First();
+                        IEnumerable<Position> toTrim = positions.Where(a => !a.IsSolved() &&
+                                                                        (a.Id != p.Id && a.Id != o.Id));
+                        foreach(Position t in toTrim)
+                        {
+                            t.Remove(p.Possible[0]);
+                            t.Remove(p.Possible[1]);
+                        }
+                    }
                 }
             }
         }
