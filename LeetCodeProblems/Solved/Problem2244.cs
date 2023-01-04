@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LeetCodeProblems
+namespace LeetCodeProblems.Solved
 {
     public class Problem2244 : Solution
     {
@@ -23,6 +23,66 @@ namespace LeetCodeProblems
         }
 
         public int MinimumRounds(int[] tasks)
+        {
+            Dictionary<int, int> counts = new Dictionary<int, int>();
+            for (int i = 0; i < tasks.Length; i++)
+            {
+                if (!counts.ContainsKey(tasks[i]))
+                {
+                    counts.Add(tasks[i], 0);
+                }
+                counts[tasks[i]]++;
+            }
+
+            int days = 0;
+            Dictionary<int, int> cache = new Dictionary<int, int>();
+
+            foreach (int key in counts.Keys)
+            {
+                int num = counts[key];
+
+                if (cache.ContainsKey(num))
+                {
+                    days += cache[num];
+                    continue;
+                }
+
+                int d = 0;
+                if (num < 2)
+                {
+                    return -1;
+                }
+                else if (num == 2)
+                {
+                    d++;
+                }
+                else
+                {
+                    int m = num % 3;
+                    if (m == 0)
+                    {
+                        d += num / 3;
+                    }
+                    else if (m == 1)
+                    {
+                        d += num / 3 - 1;
+                        d += 2;
+                    }
+                    else if (m == 2)
+                    {
+                        d += num / 3;
+                        d++;
+                    }
+                }
+                days += d;
+
+                cache.Add(num, d);
+            }
+
+            return days;
+        }
+
+        public int MinimumRoundsTwo(int[] tasks)
         {
             int days = 0;
             IEnumerable<int> list = tasks.Distinct();
@@ -52,16 +112,16 @@ namespace LeetCodeProblems
                     int m = num % 3;
                     if (m == 0)
                     {
-                        d += (num / 3);
+                        d += num / 3;
                     }
                     else if (m == 1)
                     {
-                        d += ((num / 3) - 1);
+                        d += num / 3 - 1;
                         d += 2;
                     }
                     else if (m == 2)
                     {
-                        d += (num / 3);
+                        d += num / 3;
                         d++;
                     }
                 }
