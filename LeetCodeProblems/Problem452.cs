@@ -24,7 +24,7 @@ namespace LeetCodeProblems
 
         public int FindMinArrowShots(int[][] points)
         {
-
+            return 1;
         }
 
         private Dictionary<int, List<int[]>> GetIntersections(int[][] points)
@@ -39,6 +39,8 @@ namespace LeetCodeProblems
 
                 }
             }
+
+            return intersections;
         }
     }
 }
