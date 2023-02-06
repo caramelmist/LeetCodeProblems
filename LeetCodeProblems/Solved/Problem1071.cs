@@ -97,40 +97,6 @@ namespace LeetCodeProblems.Solved
             }
 
             return "";
-
-            /*
-             
-            int len1 = str1.Length;
-            int len2 = str2.Length;
-            int min = len1 < len2 ? len1 : len2;
-            List<int> denoms = new List<int>();
-            for (int i = 1; i <= min; i++)
-            {
-                if (len1 % i == 0 && len2 % i == 0)
-                {
-                    denoms.Add(i);
-                    denoms.Add(len1 / i);
-                    denoms.Add(len2 / i);
-                    min = min / i;
-                }
-            }
-
-            denoms = denoms.Distinct().ToList();
-            denoms.Sort();
-
-            for (int i = denoms.Count - 1; i >= 0; i--)
-            {
-                if(str1.Length < denoms[i])
-                {
-                    continue;
-                }
-                string ret = str1.Substring(0, denoms[i]);
-                if (str1.Replace(ret, "").Length == 0 && str2.Replace(ret, "").Length == 0)
-                {
-                    return ret;
-                }
-            }
-             */
         }
     }
 }
