@@ -28,6 +28,16 @@ namespace LeetCodeProblems
         {
             bool complete = false;
             ListNode temp = new ListNode();
+
+            ListNode min = lists[0];
+
+            for (int i = 1; i < lists.Length; i++)
+            {
+                if (lists[i].val < min.val)
+                {
+                    min = lists[i];
+                }
+            }
             
             while (!complete)
             {
