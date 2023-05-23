@@ -26,7 +26,7 @@ namespace LeetCodeProblems
                 QuestionNode n = new QuestionNode(i, questions[i][0]);
             }
 
-
+            return 1;
 
         }
     }
