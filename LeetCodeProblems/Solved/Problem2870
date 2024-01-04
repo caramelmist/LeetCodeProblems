@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LeetCodeProblems
+{
+  public class Problem2870 : Solution
+  {
+    public void Run()
+    {
+      int actual = MinOperations(new int[] { 2, 3, 3, 2, 2, 4, 2, 3, 4 });
+      int expected = 4;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] { 2, 1, 2, 2, 3, 3 });
+      expected = -1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] {});
+      expected = -1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] { 1 });
+      expected = -1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] { 1, 1 });
+      expected = 1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] { 1, 1, 2 });
+      expected = -1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = MinOperations(new int[] { 2, 3, 3, 2, 2, 4, 2, 3, 4, 5 });
+      expected = -1;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+    }
+
+    public int MinOperations(int[] nums)
+    {
+      if(nums.Length < 2)
+      {
+        return -1;
+      }
+
+      Dictionary<int, int> result = new Dictionary<int, int>();
+
+      for(int i = 0; i < nums.Length; i++)
+      {
+        if (!result.ContainsKey(nums[i]))
+        {
+          result.Add(nums[i], 0);
+        }
+        result[nums[i]]++;
+      }
+
+      int total = 0;
+      foreach(int i in result.Keys)
+      {
+        if (result[i] == 1)
+        {
+          return -1;
+        }
+
+        if (result[i] == 2)
+        {
+          total += 1;
+          continue;
+        }
+
+        int ops = result[i] / 3;
+        int leftover = result[i] % 3;
+        if(leftover == 0)
+        {
+          total += ops;
+        }
+        else
+        {
+          total += ops + 1;
+        }
+      }
+
+      return total;
+    }
+  }
+}
