@@ -1,0 +1,42 @@
+namespace LeetCodeProblems
+{
+  internal class Problem1704 : Solution
+  {
+    public void Run()
+    {
+      bool actual = HalvesAreAlike("book");
+      bool expected = true;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+
+      actual = HalvesAreAlike("textbook");
+      expected = false;
+      Console.WriteLine("Outcome: {0} {1}", expected, actual);
+    }
+
+    public bool HalvesAreAlike(string s)
+    {
+      int first = 0;
+      int second = 0;
+      for (int i = 0, j = s.Length / 2; j < s.Length; i++, j++)
+      {
+        if (IsVowel(s[i]))
+        {
+          first++;
+        }
+        if (IsVowel(s[j]))
+        {
+          second++;
+        }
+      }
+
+      return first == second;
+    }
+
+    private bool IsVowel(char c)
+    {
+      return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+  }
+
+
+}
