@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCodeProblems.Solved
 {
-    public class Problem906 : Solution
+    public class Problem2116 : Solution
     {
         public void Run()
         {
